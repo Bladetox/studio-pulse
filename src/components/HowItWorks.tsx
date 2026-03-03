@@ -14,7 +14,7 @@ export default function HowItWorks() {
           <p className="text-gray-400 text-lg max-w-xl mx-auto">No complicated setup. No IT degree required. Just sign up and start tracking your studio\'s growth today.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {steps.map((s, i) => (
+          {steps.map((s) => (
             <div key={s.step} className="flex gap-6 p-6 rounded-2xl border border-white/5 bg-white/3 hover:border-purple-500/20 transition-colors">
               <div className="flex-shrink-0">
                 <span className="text-5xl font-black text-purple-500/30">{s.step}</span>
