@@ -22,8 +22,9 @@ export default function Navbar() {
             alt="StudioPulse"
             className="h-8 w-auto"
             onError={(e) => {
-              e.currentTarget.style.display = 'none'
-              e.currentTarget.nextElementSibling!.style.display = 'flex'
+              e.currentTarget.style.display = 'none';
+              const sibling = e.currentTarget.nextElementSibling as HTMLElement | null;
+              if (sibling) sibling.style.display = 'flex';
             }}
           />
           <span className="text-xl font-bold text-white hidden" style={{display:'none'}}>
@@ -41,10 +42,8 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <a href="#pricing" className="text-sm text-gray-300 hover:text-white transition-colors">Log in</a>
-          <a href="#pricing" className="bg-[#a855f7] hover:bg-[#9333ea] text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-purple-500/25">
-            Start Free Trial
-          </a>
+          <a href="#pricing" className="text-gray-400 hover:text-white text-sm transition-colors">Log in</a>
+          <a href="#pricing" className="bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors">Start Free Trial</a>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -53,20 +52,20 @@ export default function Navbar() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          <div className={`w-5 h-0.5 bg-white transition-all duration-200 ${menuOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
-          <div className={`w-5 h-0.5 bg-white my-1 transition-all duration-200 ${menuOpen ? 'opacity-0' : ''}`} />
-          <div className={`w-5 h-0.5 bg-white transition-all duration-200 ${menuOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
+          <div className="w-5 h-0.5 bg-white mb-1"></div>
+          <div className="w-5 h-0.5 bg-white mb-1"></div>
+          <div className="w-5 h-0.5 bg-white"></div>
         </button>
       </div>
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-[#0a0a0a]/98 border-t border-white/10 px-6 py-4 flex flex-col gap-4">
-          <a href="#features" className="text-gray-300 hover:text-white" onClick={() => setMenuOpen(false)}>Features</a>
-          <a href="#how-it-works" className="text-gray-300 hover:text-white" onClick={() => setMenuOpen(false)}>How It Works</a>
-          <a href="#pricing" className="text-gray-300 hover:text-white" onClick={() => setMenuOpen(false)}>Pricing</a>
-          <a href="#faq" className="text-gray-300 hover:text-white" onClick={() => setMenuOpen(false)}>FAQ</a>
-          <a href="#pricing" className="bg-[#a855f7] text-white text-center py-3 rounded-full font-semibold" onClick={() => setMenuOpen(false)}>Start Free Trial</a>
+        <div className="md:hidden bg-[#0a0a0a]/95 backdrop-blur-md border-t border-white/10 px-6 py-4 flex flex-col gap-4">
+          <a href="#features" className="text-gray-400 hover:text-white text-sm" onClick={() => setMenuOpen(false)}>Features</a>
+          <a href="#how-it-works" className="text-gray-400 hover:text-white text-sm" onClick={() => setMenuOpen(false)}>How It Works</a>
+          <a href="#pricing" className="text-gray-400 hover:text-white text-sm" onClick={() => setMenuOpen(false)}>Pricing</a>
+          <a href="#faq" className="text-gray-400 hover:text-white text-sm" onClick={() => setMenuOpen(false)}>FAQ</a>
+          <a href="#pricing" className="bg-purple-600 text-white text-sm font-semibold px-5 py-2 rounded-full text-center" onClick={() => setMenuOpen(false)}>Start Free Trial</a>
         </div>
       )}
     </nav>
